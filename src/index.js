@@ -1,7 +1,8 @@
-module.exports = function check(str, bracketsConfig) {
+module.exports = function check(str, brackets) {
     var seq = [];
-    for (let i = 0; i < str.length; i++) {
-        for (let j = 0; j < bracketsConfig.length; j++) {
+    var bracketsConfig = JSON.parse(JSON.stringify(brackets));
+    for (var i = 0; i < str.length; i++) {
+        for (var j = 0; j < bracketsConfig.length; j++) {
             if (str.charAt(i) === bracketsConfig[j][0]) {
                 if (str.charAt(i) === bracketsConfig[j][1]) {
                     bracketsConfig[j][0] = bracketsConfig[j][0] + "o";
@@ -23,8 +24,8 @@ module.exports = function check(str, bracketsConfig) {
             }
         }
     }
-    if(seq.length>0){
-      return false;
+    if (seq.length > 0) {
+        return false;
     }
     return true;
-}
+};
